@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GestionProyectosAPI.Models;
 
-public partial class Proyecto
+public partial class Proyectos
 {
     [Key]
     [Column("proyectoId")]
@@ -42,5 +42,5 @@ public partial class Proyecto
 
     [ForeignKey("UsuarioId")]
     [InverseProperty("Proyecto")]
-    public virtual Usuario Usuario { get; set; } = null!;
+    public virtual Usuarios Usuario { get; set; } = null!;
 }

@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 namespace GestionProyectosAPI.Models;
 
 [Index("Correo", Name = "UQ__Usuario__2A586E0B759FFA12", IsUnique = true)]
-public partial class Usuario
+public partial class Usuarios
 {
     [Key]
     [Column("usuarioId")]
@@ -38,9 +38,9 @@ public partial class Usuario
     public virtual ICollection<MiembroEquipo> MiembroEquipo { get; set; } = new List<MiembroEquipo>();
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<Proyecto> Proyecto { get; set; } = new List<Proyecto>();
+    public virtual ICollection<Proyectos> Proyecto { get; set; } = new List<Proyectos>();
 
     [ForeignKey("RolId")]
     [InverseProperty("Usuario")]
-    public virtual Rol Rol { get; set; } = null!;
+    public virtual Rols Rol { get; set; } = null!;
 }

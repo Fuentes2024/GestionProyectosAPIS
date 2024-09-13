@@ -21,7 +21,7 @@ namespace GestionProyectosAPI.DTOs
     public class ProyectoRequest
     {
 
-        public int ProyectoId { get; set; }
+        //public int ProyectoId { get; set; }
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public DateOnly? FechaInicio { get; set; }

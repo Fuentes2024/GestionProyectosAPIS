@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GestionProyectosAPI.Models;
 
-public partial class Estado
+public partial class Estados
 {
     [Key]
     [Column("estadoId")]

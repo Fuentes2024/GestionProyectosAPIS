@@ -15,19 +15,19 @@ public partial class BbContext : DbContext
     {
     }
 
-    public virtual DbSet<Estado> Estado { get; set; }
+    public virtual DbSet<Estados> Estados { get; set; }
 
-    public virtual DbSet<Informe> Informe { get; set; }
+    public virtual DbSet<Informe> Informes { get; set; }
 
     public virtual DbSet<MiembroEquipo> MiembroEquipo { get; set; }
 
-    public virtual DbSet<Proyecto> Proyecto { get; set; }
+    public virtual DbSet<Proyectos> Proyectos { get; set; }
 
-    public virtual DbSet<Rol> Rol { get; set; }
+    public virtual DbSet<Rols> Rols { get; set; }
 
     public virtual DbSet<Tarea> Tarea { get; set; }
 
-    public virtual DbSet<Usuario> Usuario { get; set; }
+    public virtual DbSet<Usuarios> Usuarios { get; set; }
 
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
@@ -35,7 +35,7 @@ public partial class BbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Estado>(entity =>
+        modelBuilder.Entity<Estados>(entity =>
         {
             entity.HasKey(e => e.EstadoId).HasName("PK__Estado__C696F30335BA4BC9");
         });
@@ -70,7 +70,7 @@ public partial class BbContext : DbContext
                 .HasConstraintName("FK__MiembroEq__usuar__4222D4EF");
         });
 
-        modelBuilder.Entity<Proyecto>(entity =>
+        modelBuilder.Entity<Proyectos>(entity =>
         {
             entity.HasKey(e => e.ProyectoId).HasName("PK__Proyecto__543423E6BEEFD5A9");
 
@@ -79,7 +79,7 @@ public partial class BbContext : DbContext
                 .HasConstraintName("FK__Proyecto__usuari__3F466844");
         });
 
-        modelBuilder.Entity<Rol>(entity =>
+        modelBuilder.Entity<Rols>(entity =>
         {
             entity.HasKey(e => e.RolId).HasName("PK__Rol__540236346EAD7207");
         });
@@ -97,7 +97,7 @@ public partial class BbContext : DbContext
                 .HasConstraintName("FK__Tarea__proyectoI__45F365D3");
         });
 
-        modelBuilder.Entity<Usuario>(entity =>
+        modelBuilder.Entity<Usuarios>(entity =>
         {
             entity.HasKey(e => e.UsuarioId).HasName("PK__Usuario__A5B1AB8E78509A88");
 

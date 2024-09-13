@@ -17,5 +17,5 @@ public partial class MiembroEquipo
 
     public virtual ICollection<Tarea> Tarea { get; set; } = new List<Tarea>();
 
-    public virtual Usuario Usuario { get; set; } = null!;
+    public virtual Usuarios Usuario { get; set; } = null!;
 }

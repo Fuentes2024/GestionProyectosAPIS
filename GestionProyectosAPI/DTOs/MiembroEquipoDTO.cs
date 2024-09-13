@@ -9,7 +9,7 @@ namespace GestionProyectosAPI.DTOs
 
         public int UsuarioId { get; set; }
 
-        public virtual Usuario Usuario { get; set; } = null!;
+        public virtual Usuarios Usuario { get; set; } = null!;
     }
 
     public class MiembroEquipoRequest
@@ -19,6 +19,6 @@ namespace GestionProyectosAPI.DTOs
 
         public int UsuarioId { get; set; }
 
-        public virtual Usuario Usuario { get; set; } = null!;
+        public virtual Usuarios Usuario { get; set; } = null!;
     }
 }

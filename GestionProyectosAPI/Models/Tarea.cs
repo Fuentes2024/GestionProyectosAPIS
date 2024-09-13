@@ -18,5 +18,5 @@ public partial class Tarea
     public int MiembroEquipoId { get; set; }
     public int ProyectoId { get; set; }
     public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
-    public virtual Proyecto Proyecto { get; set; } = null!;
+    public virtual Proyectos Proyecto { get; set; } = null!;
 }
