@@ -19,13 +19,13 @@ public partial class BbContext : DbContext
 
     public virtual DbSet<Informe> Informe { get; set; }
 
-    public virtual DbSet<MiembroEquipo> MiembroEquipo { get; set; }
+    public virtual DbSet<MiembroEquipos> MiembroEquipos { get; set; }
 
     public virtual DbSet<Proyecto> Proyecto { get; set; }
 
     public virtual DbSet<Rol> Rol { get; set; }
 
-    public virtual DbSet<Tarea> Tarea { get; set; }
+    public virtual DbSet<Tareas> Tareas { get; set; }
 
     public virtual DbSet<Usuario> Usuario { get; set; }
 
@@ -61,7 +61,7 @@ public partial class BbContext : DbContext
                 .HasConstraintName("FK__Informe__usuario__4AB81AF0");
         });
 
-        modelBuilder.Entity<MiembroEquipo>(entity =>
+        modelBuilder.Entity<MiembroEquipos>(entity =>
         {
             entity.HasKey(e => e.MiembroEquipoId).HasName("PK__MiembroE__BD9FCD861705A428");
 
@@ -84,7 +84,7 @@ public partial class BbContext : DbContext
             entity.HasKey(e => e.RolId).HasName("PK__Rol__540236346EAD7207");
         });
 
-        modelBuilder.Entity<Tarea>(entity =>
+        modelBuilder.Entity<Tareas>(entity =>
         {
             entity.HasKey(e => e.TareaId).HasName("PK__Tarea__E6731A803C9B86FF");
 

@@ -6,10 +6,10 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GestionProyectosAPI.Models;
 
-public partial class Tarea
+public partial class Tareas
 {
     [Key]
-    [Column("tareaId")]
+    [Column("TareaId")]
     public int TareaId { get; set; }
 
     [Column("nombre")]
@@ -23,7 +23,7 @@ public partial class Tarea
     public string? Descripcion { get; set; }
 
     [Column("estadoTarea")]
-    [StringLength(1)]
+    [StringLength(100)]
     [Unicode(false)]
     public string EstadoTarea { get; set; } = null!;
 
@@ -45,10 +45,10 @@ public partial class Tarea
     public int ProyectoId { get; set; }
 
     [ForeignKey("MiembroEquipoId")]
-    [InverseProperty("Tarea")]
-    public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
+    [InverseProperty("Tareas")]
+    public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
 
     [ForeignKey("ProyectoId")]
-    [InverseProperty("Tarea")]
+    [InverseProperty("Tareas")]
     public virtual Proyecto Proyecto { get; set; } = null!;
 }

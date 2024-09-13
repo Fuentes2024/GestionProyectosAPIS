@@ -46,7 +46,7 @@ public partial class Informe
 
     [ForeignKey("MiembroEquipoId")]
     [InverseProperty("Informe")]
-    public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
+    public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
 
     [ForeignKey("ProyectoId")]
     [InverseProperty("Informe")]

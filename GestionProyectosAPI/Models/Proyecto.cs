@@ -38,7 +38,7 @@ public partial class Proyecto
     public virtual ICollection<Informe> Informe { get; set; } = new List<Informe>();
 
     [InverseProperty("Proyecto")]
-    public virtual ICollection<Tarea> Tarea { get; set; } = new List<Tarea>();
+    public virtual ICollection<Tareas> Tarea { get; set; } = new List<Tareas>();
 
     [ForeignKey("UsuarioId")]
     [InverseProperty("Proyecto")]
