@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GestionProyectosAPI.Models;
 
-public partial class Rol
+public partial class Rols
 {
     [Key]
     [Column("rolId")]
@@ -18,5 +18,5 @@ public partial class Rol
     public string Nombre { get; set; } = null!;
 
     [InverseProperty("Rol")]
-    public virtual ICollection<Usuario> Usuario { get; set; } = new List<Usuario>();
+    public virtual ICollection<Usuarios> Usuario { get; set; } = new List<Usuarios>();
 }

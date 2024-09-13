@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace GestionProyectosAPI.Models;
 
-public partial class Informe
+public partial class Informes
 {
     [Key]
     [Column("informe_id")]
@@ -42,7 +42,7 @@ public partial class Informe
 
     [ForeignKey("EstadoId")]
     [InverseProperty("Informe")]
-    public virtual Estado Estado { get; set; } = null!;
+    public virtual Estados Estado { get; set; } = null!;
 
     [ForeignKey("MiembroEquipoId")]
     [InverseProperty("Informe")]
@@ -50,9 +50,9 @@ public partial class Informe
 
     [ForeignKey("ProyectoId")]
     [InverseProperty("Informe")]
-    public virtual Proyecto Proyecto { get; set; } = null!;
+    public virtual Proyectos Proyecto { get; set; } = null!;
 
     [ForeignKey("UsuarioId")]
     [InverseProperty("Informe")]
-    public virtual Usuario Usuario { get; set; } = null!;
+    public virtual Usuarios Usuario { get; set; } = null!;
 }

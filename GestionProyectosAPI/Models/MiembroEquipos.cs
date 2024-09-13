@@ -17,12 +17,12 @@ public partial class MiembroEquipos
     public int UsuarioId { get; set; }
 
     [InverseProperty("MiembroEquipos")]
-    public virtual ICollection<Informe> Informe { get; set; } = new List<Informe>();
+    public virtual ICollection<Informes> Informe { get; set; } = new List<Informes>();
 
     [InverseProperty("MiembroEquipos")]
     public virtual ICollection<Tareas> Tarea { get; set; } = new List<Tareas>();
 
     [ForeignKey("UsuarioId")]
     [InverseProperty("MiembroEquipos")]
-    public virtual Usuario Usuario { get; set; } = null!;
+    public virtual Usuarios Usuario { get; set; } = null!;
 }

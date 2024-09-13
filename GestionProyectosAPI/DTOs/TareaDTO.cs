@@ -14,7 +14,7 @@ namespace GestionProyectosAPI.DTOs
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
         public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
-        public virtual Proyecto Proyecto { get; set; } = null!;
+        public virtual Proyectos Proyecto { get; set; } = null!;
     }
 
     public class TareaRequest
@@ -29,6 +29,6 @@ namespace GestionProyectosAPI.DTOs
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
         public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
-        public virtual Proyecto Proyecto { get; set; } = null!;
+        public virtual Proyectos Proyecto { get; set; } = null!;
     }
 }

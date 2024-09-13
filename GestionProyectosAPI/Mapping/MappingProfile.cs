@@ -8,16 +8,16 @@ namespace GestionProyectosAPI.Mapping
     {
         public MappingProfile() {
             //Modelo -> DTO
-            CreateMap<Proyecto, ProyectoResponse>();
-            CreateMap<Usuario, UsuarioResponse>();
-            CreateMap<Rol, RolResponse>();
+            CreateMap<Proyectos, ProyectoResponse>();
+            CreateMap<Usuarios, UsuarioResponse>();
+            CreateMap<Rols, RolResponse>();
             CreateMap<MiembroEquipos,MiembroEquipoResponse>();
             CreateMap<Tareas, TareaResponse>();
 
             //DTO -> Modelo 
-            CreateMap<ProyectoRequest, Proyecto>();
-            CreateMap<UsuarioRequest, Usuario>();
-            CreateMap<RolRequest,  Proyecto>();
+            CreateMap<ProyectoRequest, Proyectos>();
+            CreateMap<UsuarioRequest, Usuarios>();
+            CreateMap<RolRequest,  Proyectos>();
             CreateMap<MiembroEquipoRequest, MiembroEquipos>();
             CreateMap<TareaRequest, Tareas>();
         }

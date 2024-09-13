@@ -50,5 +50,5 @@ public partial class Tareas
 
     [ForeignKey("ProyectoId")]
     [InverseProperty("Tareas")]
-    public virtual Proyecto Proyecto { get; set; } = null!;
+    public virtual Proyectos Proyecto { get; set; } = null!;
 }
