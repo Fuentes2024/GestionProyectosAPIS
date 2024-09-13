@@ -13,7 +13,7 @@ namespace GestionProyectosAPI.DTOs
         public string? Prioridad { get; set; }
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
-        public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
+        public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
         public virtual Proyecto Proyecto { get; set; } = null!;
     }
 
@@ -28,7 +28,7 @@ namespace GestionProyectosAPI.DTOs
         public string? Prioridad { get; set; }
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
-        public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
+        public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
         public virtual Proyecto Proyecto { get; set; } = null!;
     }
 }

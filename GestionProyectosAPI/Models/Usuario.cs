@@ -35,7 +35,7 @@ public partial class Usuario
     public virtual ICollection<Informe> Informe { get; set; } = new List<Informe>();
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<MiembroEquipo> MiembroEquipo { get; set; } = new List<MiembroEquipo>();
+    public virtual ICollection<MiembroEquipos> MiembroEquipo { get; set; } = new List<MiembroEquipos>();
 
     [InverseProperty("Usuario")]
     public virtual ICollection<Proyecto> Proyecto { get; set; } = new List<Proyecto>();
