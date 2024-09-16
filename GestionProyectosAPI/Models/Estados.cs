@@ -18,5 +18,5 @@ public partial class Estados
     public string Nombre { get; set; } = null!;
 
     [InverseProperty("Estado")]
-    public virtual ICollection<Informe> Informe { get; set; } = new List<Informe>();
+    public virtual ICollection<Informes> Informe { get; set; } = new List<Informes>();
 }

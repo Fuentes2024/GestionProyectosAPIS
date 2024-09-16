@@ -18,8 +18,11 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.7.3" />
   </ItemGroup>
 
+<<<<<<< HEAD
   <ItemGroup>
     <Folder Include="Services\Usuario\" />
   </ItemGroup>
 
+=======
+>>>>>>> ELI
 </Project>

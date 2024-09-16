@@ -32,10 +32,10 @@ public partial class Usuarios
     public int RolId { get; set; }
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<Informe> Informe { get; set; } = new List<Informe>();
+    public virtual ICollection<Informes> Informe { get; set; } = new List<Informes>();
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<MiembroEquipo> MiembroEquipo { get; set; } = new List<MiembroEquipo>();
+    public virtual ICollection<MiembroEquipos> MiembroEquipo { get; set; } = new List<MiembroEquipos>();
 
     [InverseProperty("Usuario")]
     public virtual ICollection<Proyectos> Proyecto { get; set; } = new List<Proyectos>();
