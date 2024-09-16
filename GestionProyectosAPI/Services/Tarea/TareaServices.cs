@@ -18,27 +18,27 @@ namespace GestionProyectosAPI.Services.Tarea
 
         public async Task<int> DeleteTarea(int tareaId)
         {
-            var tar = await _db.Tareas.FindAsync(tareaId);
-            if (tar == null)
+            var tarea = await _db.Tareas.FindAsync(tareaId);
+            if (tarea == null)
                 return -1;
 
-            _db.Tareas.Remove(tar);
+            _db.Tareas.Remove(tarea);
 
             return await _db.SaveChangesAsync();
         }
 
         public async Task<TareaResponse> GetTarea(int tareaId)
         {
-            var tar = await _db.Tareas.FindAsync(tareaId);
-            var tareaResponse = _mapper.Map<Tareas,TareaResponse>(tar);
+            var tarea = await _db.Tareas.FindAsync(tareaId);
+            var tareaResponse = _mapper.Map<Tareas,TareaResponse>(tarea);
 
             return tareaResponse;
         }
 
         public async Task<List<TareaResponse>> GetTareas()
         {
-            var trs = await _db.Tareas.ToListAsync();
-            var tareaList = _mapper.Map<List<Tareas>, List<TareaResponse>>(trs);
+            var tareas = await _db.Tareas.ToListAsync();
+            var tareaList = _mapper.Map<List<Tareas>, List<TareaResponse>>(tareas);
 
             return tareaList;
 
@@ -48,8 +48,8 @@ namespace GestionProyectosAPI.Services.Tarea
         {
             var tareaRequest = _mapper.Map<TareaRequest, Tareas>(tarea);
             await _db.Tareas.AddAsync(tareaRequest);
-
-            return await _db.SaveChangesAsync();
+            await _db.SaveChangesAsync();
+            return tareaRequest.TareaId;
 
            
         }
