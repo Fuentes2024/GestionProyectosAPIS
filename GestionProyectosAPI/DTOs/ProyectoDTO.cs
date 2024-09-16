@@ -7,9 +7,8 @@ namespace GestionProyectosAPI.DTOs
 {
     public class ProyectoResponse
     {
-    
         public int ProyectoId { get; set; }
-        public string Nombre { get; set; } = null!;    
+        public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public DateOnly? FechaInicio { get; set; }
         public DateOnly? FechaFin { get; set; }
@@ -20,12 +19,6 @@ namespace GestionProyectosAPI.DTOs
 
     public class ProyectoRequest
     {
-
-<<<<<<< HEAD
-        //public int ProyectoId { get; set; }
-=======
-        public int ProyectoId { get; set; }
->>>>>>> ELI
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public DateOnly? FechaInicio { get; set; }

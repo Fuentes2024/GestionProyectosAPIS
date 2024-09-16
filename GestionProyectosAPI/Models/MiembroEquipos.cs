@@ -13,21 +13,16 @@ public partial class MiembroEquipos
     public string? Cargo { get; set; }
 
     public int UsuarioId { get; set; }
-<<<<<<< HEAD:GestionProyectosAPI/Models/MiembroEquipo.cs
-    public virtual ICollection<Informe> Informe { get; set; } = new List<Informe>();
+    public virtual ICollection<Tareas> Tarea { get; set; } = new List<Tareas>();
 
-    public virtual ICollection<Tarea> Tarea { get; set; } = new List<Tarea>();
-
-=======
 
     [InverseProperty("MiembroEquipos")]
     public virtual ICollection<Informes> Informe { get; set; } = new List<Informes>();
 
     [InverseProperty("MiembroEquipos")]
-    public virtual ICollection<Tareas> Tarea { get; set; } = new List<Tareas>();
+    public virtual ICollection<Tareas> Tareas { get; set; } = new List<Tareas>();
 
     [ForeignKey("UsuarioId")]
     [InverseProperty("MiembroEquipos")]
->>>>>>> ELI:GestionProyectosAPI/Models/MiembroEquipos.cs
     public virtual Usuarios Usuario { get; set; } = null!;
 }

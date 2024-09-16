@@ -4,7 +4,6 @@ namespace GestionProyectosAPI.DTOs
 {
     public class TareaResponse
     {
-      
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public string EstadoTarea { get; set; } = null!;
@@ -13,17 +12,12 @@ namespace GestionProyectosAPI.DTOs
         public string? Prioridad { get; set; }
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
-<<<<<<< HEAD
-        public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
-=======
         public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
->>>>>>> ELI
         public virtual Proyectos Proyecto { get; set; } = null!;
     }
 
     public class TareaRequest
     {
-       
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public string EstadoTarea { get; set; } = null!;
@@ -32,11 +26,7 @@ namespace GestionProyectosAPI.DTOs
         public string? Prioridad { get; set; }
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
-<<<<<<< HEAD
-        public virtual MiembroEquipo MiembroEquipo { get; set; } = null!;
-=======
         public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
->>>>>>> ELI
         public virtual Proyectos Proyecto { get; set; } = null!;
     }
 }
