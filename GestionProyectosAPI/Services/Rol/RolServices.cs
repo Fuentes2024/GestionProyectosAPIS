@@ -17,12 +17,12 @@ namespace GestionProyectosAPI.Services.Rol
 
         public async Task<int> DeleteRol(int rolId)
         {
-            var rol = await _db.Rol.FindAsync(rolId);
+            var rol = await _db.Rols.FindAsync(rolId);
             if (rol == null)
                 return -1;
 
           
-           _db.Rol.Remove(rol);
+           _db.Rols.Remove(rol);
 
             return await _db.SaveChangesAsync();
         }

@@ -64,7 +64,9 @@ namespace GestionProyectosAPI.Services.Usuario
             entity.Clave = usuario.Clave;
             entity.RolId = usuario.RolId;
 
-            return _db.SaveChanges();
+            _db.Usuarios.Update(entity);
+
+            return await _db.SaveChangesAsync();
         }
     }
 }
