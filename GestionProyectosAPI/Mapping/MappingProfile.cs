@@ -17,7 +17,7 @@ namespace GestionProyectosAPI.Mapping
             //DTO -> Modelo 
             CreateMap<ProyectoRequest, Proyectos>();
             CreateMap<UsuarioRequest, Usuarios>();
-            CreateMap<RolRequest,  Proyectos>();
+            CreateMap<RolRequest,  Rols>();
             CreateMap<MiembroEquipoRequest, MiembroEquipos>();
             CreateMap<TareaRequest, Tareas>();
         }

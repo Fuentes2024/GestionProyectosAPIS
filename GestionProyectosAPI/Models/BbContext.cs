@@ -15,19 +15,19 @@ public partial class BbContext : DbContext
     {
     }
 
-    public virtual DbSet<Estados> Estado { get; set; }
+    public virtual DbSet<Estados> Estados { get; set; }
 
-    public virtual DbSet<Informes> Informe { get; set; }
+    public virtual DbSet<Informes> Informes { get; set; }
 
     public virtual DbSet<MiembroEquipos> MiembroEquipos { get; set; }
 
-    public virtual DbSet<Proyectos> Proyecto { get; set; }
+    public virtual DbSet<Proyectos> Proyectos { get; set; }
 
-    public virtual DbSet<Rols> Rol { get; set; }
+    public virtual DbSet<Rols> Rols { get; set; }
 
     public virtual DbSet<Tareas> Tareas { get; set; }
 
-    public virtual DbSet<Usuarios> Usuario { get; set; }
+    public virtual DbSet<Usuarios> Usuarios { get; set; }
 
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
