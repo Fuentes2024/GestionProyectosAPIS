@@ -1,6 +1,8 @@
 ﻿using AutoMapper;
 using GestionProyectosAPI.DTOs;
 using GestionProyectosAPI.Models;
+using Microsoft.EntityFrameworkCore;
+using System.Threading;
 
 namespace GestionProyectosAPI.Services.Rol
 {
@@ -27,24 +29,39 @@ namespace GestionProyectosAPI.Services.Rol
             return await _db.SaveChangesAsync();
         }
 
-        public Task<RolResponse> GetRol(int rolId)
+        public async Task<RolResponse> GetRol(int rolId)
         {
-            throw new NotImplementedException();
+            var rol = await _db.Rols.FindAsync(rolId);
+            var rolReponse = _mapper.Map<Rols, RolResponse>(rol);
+
+            return rolReponse;
         }
 
-        public Task<List<RolResponse>> GetRols()
+        public async Task<List<RolResponse>> GetRols()
         {
-            throw new NotImplementedException();
+            var rol = await _db.Rols.ToListAsync();
+            var rolList = _mapper.Map<List<Rols>, List<RolResponse>>(rol);
+
+            return rolList;
         }
 
-        public Task<int> PostRol(RolRequest rol)
+        public async Task<int> PostRol(RolRequest rol)
         {
-            throw new NotImplementedException();
+            var rolRequest = _mapper.Map<RolRequest, Rols>(rol);
+            await _db.Rols.AddAsync(rolRequest);
+
+            return await _db.SaveChangesAsync();
         }
 
-        public Task<int> PutRol(int rolId, RolRequest rol)
+        public async Task<int> PutRol(int rolId, RolRequest rol)
         {
-            throw new NotImplementedException();
+            var entity = await _db.Rols.FindAsync(rolId);
+            if (entity == null)
+                return -1;
+
+            entity.Nombre = rol.Nombre;
+
+            return _db.SaveChanges();
         }
     }
 }
