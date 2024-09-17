@@ -69,6 +69,7 @@ namespace GestionProyectosAPI.Services.Tarea
             entity.MiembroEquipoId = tarea.MiembroEquipoId;
             entity.ProyectoId = tarea.ProyectoId;
 
+            _db.Tareas.Update(entity);
             return _db.SaveChanges();
         }
     }
