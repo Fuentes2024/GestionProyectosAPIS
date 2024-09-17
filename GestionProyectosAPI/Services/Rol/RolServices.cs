@@ -5,8 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using System.Threading;
 
 namespace GestionProyectosAPI.Services.Rol
-{
-    public class RolServices : IRol
+{    public class RolServices : IRolServices
+
     {
         private readonly BbContext _db;
         private readonly IMapper _mapper;
