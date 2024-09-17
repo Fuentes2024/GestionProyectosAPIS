@@ -14,13 +14,15 @@ namespace GestionProyectosAPI.Mapping
             CreateMap<Rols, RolResponse>();
             CreateMap<MiembroEquipos, MiembroEquipoResponse>();
             CreateMap<Tareas, TareaResponse>();
+            CreateMap<Informes, InformeResponse>();
 
             // DTO -> Modelo
-            CreateMap<ProyectoRequest, Proyectos>();
+            CreateMap<ProyectoRequest, Proyectos>();     
             CreateMap<UsuarioRequest, Usuarios>();
             CreateMap<RolRequest, Rols>();
             CreateMap<MiembroEquipoRequest, MiembroEquipos>();
             CreateMap<TareaRequest, Tareas>();
+            CreateMap<InformeRequest, Informes>();
         }
     }
 }
