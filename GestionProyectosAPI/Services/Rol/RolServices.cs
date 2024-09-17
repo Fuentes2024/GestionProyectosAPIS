@@ -60,7 +60,7 @@ namespace GestionProyectosAPI.Services.Rol
                 return -1;
 
             entity.Nombre = rol.Nombre;
-
+//ok
             _db.Rols.Update(entity);
             return _db.SaveChanges();
         }

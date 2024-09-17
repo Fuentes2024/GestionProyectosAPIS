@@ -60,7 +60,7 @@ namespace GestionProyectosAPI.Services.Miembro
 
             entity.Cargo = miembroEquipo.Cargo;
             entity.UsuarioId = miembroEquipo.UsuarioId;
-
+            //ok
             _db.MiembroEquipos.Update(entity);
             return _db.SaveChanges();
         }
