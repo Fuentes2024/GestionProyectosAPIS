@@ -5,6 +5,8 @@
         public static void UseEndpoints(this WebApplication app)
         {
             TareaEndpoints.Add(app);
+            ProyectoEndpoints.Add(app);
+
         }
     }
 }

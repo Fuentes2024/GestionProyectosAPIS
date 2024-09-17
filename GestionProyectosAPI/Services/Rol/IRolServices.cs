@@ -3,6 +3,7 @@
 namespace GestionProyectosAPI.Services.Rol
 {
     public interface IRolServices
+
     {
         Task<int> PostRol(RolRequest rol);
         Task<List<RolResponse>> GetRols();
