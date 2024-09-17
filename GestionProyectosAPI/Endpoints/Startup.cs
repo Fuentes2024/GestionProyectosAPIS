@@ -6,7 +6,8 @@
         {
             TareaEndpoints.Add(app);
             ProyectoEndpoints.Add(app);
-
+            UsuarioEnpoints.Add(app);
+            RolEndpoints.Add(app);
         }
     }
 }

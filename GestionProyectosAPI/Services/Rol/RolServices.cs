@@ -61,6 +61,7 @@ namespace GestionProyectosAPI.Services.Rol
 
             entity.Nombre = rol.Nombre;
 
+            _db.Rols.Update(entity);
             return _db.SaveChanges();
         }
     }
