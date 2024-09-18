@@ -1,6 +1,7 @@
 using GestionProyectosAPI.DTOs;
 using GestionProyectosAPI.Endpoints;
 using GestionProyectosAPI.Models;
+using GestionProyectosAPI.Services.Informe;
 using GestionProyectosAPI.Services.Miembro;
 using GestionProyectosAPI.Services.Proyecto;
 using GestionProyectosAPI.Services.Rol;
@@ -27,6 +28,7 @@ builder.Services.AddScoped<IMiembroServices, MiembroServices>();
 builder.Services.AddScoped<IRolServices, RolServices>();
 builder.Services.AddScoped<IProyectoServices, ProyectoServices>();
 builder.Services.AddScoped<IUsuarioServices, UsuarioServices>();
+builder.Services.AddScoped<IInformeServices, InformeServices>();
 
 
 var app = builder.Build();

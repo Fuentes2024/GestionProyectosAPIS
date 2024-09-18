@@ -8,6 +8,7 @@
             ProyectoEndpoints.Add(app);
             UsuarioEnpoints.Add(app);
             RolEndpoints.Add(app);
+            InformeEndpoints.Add(app);
         }
     }
 }
