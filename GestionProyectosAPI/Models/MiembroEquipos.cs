@@ -8,7 +8,7 @@ namespace GestionProyectosAPI.Models
     public partial class MiembroEquipos
     {
         [Key]
-        [Column("miembroEquipo_id")]
+        [Column("miembroEquipoId")]
         public int MiembroEquipoId { get; set; }
 
         [Column("cargo")]

@@ -15,9 +15,6 @@ public partial class Tareas
     public string Nombre { get; set; } = null!;
     public string? Descripcion { get; set; }
 
-    [Column("estadoTarea")]
-    [StringLength(100)]
-    [Unicode(false)]
     public string EstadoTarea { get; set; } = null!;
 
     public DateOnly? FechaInicio { get; set; }
