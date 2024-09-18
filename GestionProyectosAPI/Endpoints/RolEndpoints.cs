@@ -63,7 +63,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Modificar rol",
                 Description = "Actualiza un rol existente"
-            });
+            }).RequireAuthorization();
 
             group.MapDelete("/{id}", async (int id, IRolServices rolServices) =>
             {
@@ -76,7 +76,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "ELiminar rol",
                 Description = "ELiminar un rol existente"
-            });
+            }).RequireAuthorization();
         }
     }
 }

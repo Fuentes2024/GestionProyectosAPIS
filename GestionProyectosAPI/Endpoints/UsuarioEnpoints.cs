@@ -1,7 +1,11 @@
 ﻿using GestionProyectosAPI.DTOs;
 using GestionProyectosAPI.Services.Tarea;
 using GestionProyectosAPI.Services.Usuario;
+using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace GestionProyectosAPI.Endpoints
 {
@@ -20,7 +24,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener usuarios",
                 Description = "Muestra una lsita de todos los usuarios"
-            });
+            }).RequireAuthorization();
 
             group.MapGet("/{id}", async (int id, IUsuarioServices usuarioServices) =>
             {
@@ -61,7 +65,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Modificar usuario",
                 Description = "Actualiza un usuario existente"
-            });
+            }).RequireAuthorization();
 
             group.MapDelete("/{id}", async (int id, IUsuarioServices usuarioServices) =>
             {
@@ -74,7 +78,52 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "ELiminar usuario",
                 Description = "ELiminar un usuario existente"
+            }).RequireAuthorization();
+
+            group.MapPost("/Login", async (UsuarioRequest usuario, IUsuarioServices usuarioServices, IConfiguration config) =>
+            {
+                var login = await usuarioServices.Login(usuario);
+
+                if (login is null)
+                    return Results.Unauthorized(); //Retorna el estado 401: Unauthorized
+                else
+                {
+                    var jwtSetting = config.GetSection("JwtSetting");
+                    var secretKey = jwtSetting.GetValue<string>("SecretKey");
+                    var isusuario = jwtSetting.GetValue<string>("Isusuario");
+                    var audience = jwtSetting.GetValue<string>("Audience");
+
+                    var tokenHandler = new JwtSecurityTokenHandler();
+                    var key = Encoding.UTF8.GetBytes(secretKey);
+
+                    var tokenDescriptor = new SecurityTokenDescriptor
+                    {
+                        Subject = new ClaimsIdentity(new[]
+                        {
+                new Claim(ClaimTypes.Name, usuario.Nombre),
+                new Claim(ClaimTypes.Role, usuario.RolId.ToString())
+            }),
+                        Expires = DateTime.UtcNow.AddHours(1),
+                        Issuer = isusuario,
+                        Audience = audience,
+                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                            SecurityAlgorithms.HmacSha256Signature)
+                    };
+                    // Crear token usando parámetros definidos
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+                    // Convertir token a una cadena
+                    var jwt = tokenHandler.WriteToken(token);
+
+                    // Retornar una respuesta con el token en formato JSON
+                    return Results.Ok(new { token = jwt });
+                }
+
+            }).WithOpenApi(o => new OpenApiOperation(o)
+            {
+                Summary = "Login usuario",
+                Description = "Generar un token para inicio de sesión"
             });
+
 
         }
     }

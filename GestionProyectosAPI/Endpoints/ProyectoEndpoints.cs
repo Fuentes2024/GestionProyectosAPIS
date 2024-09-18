@@ -62,7 +62,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Modificar proyecto",
                 Description = "Actualiza un proyecto existente"
-            });
+            }).RequireAuthorization();
 
             group.MapDelete("/{id}", async (int id, IProyectoServices proyectoServices) =>
             {
@@ -75,7 +75,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "ELiminar proyecto",
                 Description = "ELiminar un proyecto existente"
-            });
+            }).RequireAuthorization();
         }
     }
 }
