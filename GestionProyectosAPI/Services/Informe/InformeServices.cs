@@ -44,8 +44,8 @@ namespace GestionProyectosAPI.Services.Informe
         {
             var informeRequest = _mapper.Map<InformeRequest, Informes>(informe);
             await _db.Informes.AddAsync(informeRequest);
-
-            return await _db.SaveChangesAsync();
+           await _db.SaveChangesAsync();
+            return informeRequest.InformeId;
         }
 
         public async Task<int> PutInforme(int informeId, InformeRequest informe)

@@ -9,6 +9,7 @@
             UsuarioEnpoints.Add(app);
             RolEndpoints.Add(app);
             MiembroEndpoints.Add(app);
+            InformeEndpoints.Add(app);
         }
     }
 }
