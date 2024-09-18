@@ -13,7 +13,7 @@ namespace GestionProyectosAPI.Endpoints
 
             group.MapGet("/", async (IProyectoServices proyectoServices) =>
             {
-                var proyectos = proyectoServices.GetProyectos();
+                var proyectos = await proyectoServices.GetProyectos();
                 // 200 OK: La solicitud se realizo correctamente
                 // y devuelve la lista de tareas
                 return Results.Ok(proyectos);

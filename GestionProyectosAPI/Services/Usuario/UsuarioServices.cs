@@ -44,6 +44,17 @@ namespace GestionProyectosAPI.Services.Usuario
             return usuarioList;
         }
 
+        public async Task<UsuarioResponse> Login(UsuarioRequest usuario)
+        {
+            var usuarioEntity = await _db.Usuarios.FirstOrDefaultAsync(
+                            o => o.Nombre == usuario.Nombre
+                            && o.Clave == usuario.Clave
+                );
+            var usuarioResponse = _mapper.Map<Usuarios, UsuarioResponse>(usuarioEntity);
+            return usuarioResponse;
+
+        }
+
         public async Task<int> PostUsuario(UsuarioRequest usuario)
         {
             var usuarioRequest = _mapper.Map<UsuarioRequest, Usuarios>(usuario);

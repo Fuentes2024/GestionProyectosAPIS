@@ -13,7 +13,7 @@ namespace GestionProyectosAPI.Endpoints
 
             group.MapGet("/", async (IRolServices rolServices) =>
             {
-                var rols = rolServices.GetRols();
+                var rols =await rolServices.GetRols();
                 // 200 OK: La solicitud se realizo correctamente
                 // y devuelve la lista de tareas
                 return Results.Ok(rols);

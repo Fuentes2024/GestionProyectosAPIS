@@ -12,7 +12,7 @@ namespace GestionProyectosAPI.Endpoints
             var group = routes.MapGroup("/api/usuarios").WithTags("usuarios");
             group.MapGet("/", async (IUsuarioServices usuarioServices) =>
             {
-                var usuarios = usuarioServices.GetUsuarios();
+                var usuarios = await usuarioServices.GetUsuarios();
                 // 200 OK: La solicitud se realizo correctamente
                 // y devuelve la lista de tareas
                 return Results.Ok(usuarios);
