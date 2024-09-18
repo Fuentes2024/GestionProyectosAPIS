@@ -35,12 +35,12 @@ public partial class Proyectos
     public int UsuarioId { get; set; }
 
     [InverseProperty("Proyecto")]
-    public virtual ICollection<Informes> Informe { get; set; } = new List<Informes>();
+    public virtual ICollection<Informes> Informes { get; set; } = new List<Informes>();
 
     [InverseProperty("Proyecto")]
-    public virtual ICollection<Tareas> Tarea { get; set; } = new List<Tareas>();
+    public virtual ICollection<Tareas> Tareas { get; set; } = new List<Tareas>();
 
     [ForeignKey("UsuarioId")]
-    [InverseProperty("Proyecto")]
+    [InverseProperty("Proyectos")]
     public virtual Usuarios Usuario { get; set; } = null!;
 }

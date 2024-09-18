@@ -68,7 +68,8 @@ namespace GestionProyectosAPI.Services.Tarea
             entity.Prioridad = tarea.Prioridad;
             entity.MiembroEquipoId = tarea.MiembroEquipoId;
             entity.ProyectoId = tarea.ProyectoId;
-
+            //ok
+            _db.Tareas.Update(entity);
             return _db.SaveChanges();
         }
     }

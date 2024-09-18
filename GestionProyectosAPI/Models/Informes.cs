@@ -41,18 +41,18 @@ public partial class Informes
     public int ProyectoId { get; set; }
 
     [ForeignKey("EstadoId")]
-    [InverseProperty("Informe")]
+    [InverseProperty("Informes")]
     public virtual Estados Estado { get; set; } = null!;
 
     [ForeignKey("MiembroEquipoId")]
-    [InverseProperty("Informe")]
+    [InverseProperty("Informes")]
     public virtual MiembroEquipos MiembroEquipo { get; set; } = null!;
 
     [ForeignKey("ProyectoId")]
-    [InverseProperty("Informe")]
+    [InverseProperty("Informes")]
     public virtual Proyectos Proyecto { get; set; } = null!;
 
     [ForeignKey("UsuarioId")]
-    [InverseProperty("Informe")]
+    [InverseProperty("Informes")]
     public virtual Usuarios Usuario { get; set; } = null!;
 }

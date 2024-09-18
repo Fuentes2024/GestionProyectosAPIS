@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using GestionProyectosAPI.Models;
 using Microsoft.EntityFrameworkCore;
-
-namespace GestionProyectosAPI.Models;
 
 [Index("Correo", Name = "UQ__Usuario__2A586E0B759FFA12", IsUnique = true)]
 public partial class Usuarios
@@ -32,15 +31,15 @@ public partial class Usuarios
     public int RolId { get; set; }
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<Informes> Informe { get; set; } = new List<Informes>();
+    public virtual ICollection<Informes> Informes { get; set; } = new List<Informes>();
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<MiembroEquipos> MiembroEquipo { get; set; } = new List<MiembroEquipos>();
+    public virtual ICollection<MiembroEquipos> MiembroEquipos { get; set; } = new List<MiembroEquipos>();
 
     [InverseProperty("Usuario")]
-    public virtual ICollection<Proyectos> Proyecto { get; set; } = new List<Proyectos>();
+    public virtual ICollection<Proyectos> Proyectos { get; set; } = new List<Proyectos>();
 
     [ForeignKey("RolId")]
-    [InverseProperty("Usuario")]
+    [InverseProperty("Usuarios")]
     public virtual Rols Rol { get; set; } = null!;
 }

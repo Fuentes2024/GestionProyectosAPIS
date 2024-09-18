@@ -34,19 +34,27 @@ public partial class BbContext : DbContext
         {
             entity.HasKey(e => e.InformeId).HasName("PK__Informe__FB2E013262CB929C");
 
-            entity.HasOne(d => d.Estado).WithMany(p => p.Informe)
+            entity.HasOne(d => d.Estado)
+                .WithMany(p => p.Informes)
+                .HasForeignKey(d => d.EstadoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Informe__estadoI__48CFD27E");
 
-            entity.HasOne(d => d.MiembroEquipo).WithMany(p => p.Informe)
+            entity.HasOne(d => d.MiembroEquipo)
+                .WithMany(p => p.Informes)
+                .HasForeignKey(d => d.MiembroEquipoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Informe__miembro__49C3F6B7");
 
-            entity.HasOne(d => d.Proyecto).WithMany(p => p.Informe)
+            entity.HasOne(d => d.Proyecto)
+                .WithMany(p => p.Informes)
+                .HasForeignKey(d => d.ProyectoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Informe__proyect__4BAC3F29");
 
-            entity.HasOne(d => d.Usuario).WithMany(p => p.Informe)
+            entity.HasOne(d => d.Usuario)
+                .WithMany(p => p.Informes)
+                .HasForeignKey(d => d.UsuarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Informe__usuario__4AB81AF0");
         });
@@ -55,7 +63,9 @@ public partial class BbContext : DbContext
         {
             entity.HasKey(e => e.MiembroEquipoId).HasName("PK__MiembroE__BD9FCD861705A428");
 
-            entity.HasOne(d => d.Usuario).WithMany(p => p.MiembroEquipo)
+            entity.HasOne(d => d.Usuario)
+                .WithMany(p => p.MiembroEquipos)
+                .HasForeignKey(d => d.UsuarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__MiembroEq__usuar__4222D4EF");
         });
@@ -64,7 +74,9 @@ public partial class BbContext : DbContext
         {
             entity.HasKey(e => e.ProyectoId).HasName("PK__Proyecto__543423E6BEEFD5A9");
 
-            entity.HasOne(d => d.Usuario).WithMany(p => p.Proyecto)
+            entity.HasOne(d => d.Usuario)
+                .WithMany(p => p.Proyectos)
+                .HasForeignKey(d => d.UsuarioId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Proyecto__usuari__3F466844");
         });
@@ -78,11 +90,15 @@ public partial class BbContext : DbContext
         {
             entity.HasKey(e => e.TareaId).HasName("PK__Tarea__E6731A803C9B86FF");
 
-            entity.HasOne(d => d.MiembroEquipo).WithMany(p => p.Tarea)
+            entity.HasOne(d => d.MiembroEquipo)
+                .WithMany(p => p.Tareas)
+                .HasForeignKey(d => d.MiembroEquipoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Tarea__miembroEq__44FF419A");
 
-            entity.HasOne(d => d.Proyecto).WithMany(p => p.Tarea)
+            entity.HasOne(d => d.Proyecto)
+                .WithMany(p => p.Tareas)
+                .HasForeignKey(d => d.ProyectoId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Tarea__proyectoI__45F365D3");
         });
@@ -91,13 +107,16 @@ public partial class BbContext : DbContext
         {
             entity.HasKey(e => e.UsuarioId).HasName("PK__Usuario__A5B1AB8E78509A88");
 
-            entity.HasOne(d => d.Rol).WithMany(p => p.Usuario)
+            entity.HasOne(d => d.Rol)
+                .WithMany(p => p.Usuarios)
+                .HasForeignKey(d => d.RolId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK__Usuario__rolId__3C69FB99");
         });
 
         OnModelCreatingPartial(modelBuilder);
     }
+
 
     partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
 }

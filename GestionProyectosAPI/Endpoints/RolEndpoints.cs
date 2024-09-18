@@ -9,7 +9,7 @@ namespace GestionProyectosAPI.Endpoints
     {
         public static void Add(this IEndpointRouteBuilder routes)
         {
-            var group = routes.MapGroup("/api/rols").WithTags("rols");
+            var group = routes.MapGroup("/api/roles").WithTags("roles");
 
             group.MapGet("/", async (IRolServices rolServices) =>
             {
@@ -39,12 +39,13 @@ namespace GestionProyectosAPI.Endpoints
 
             group.MapPost("/", async (RolRequest rol, IRolServices rolServices) =>
             {
-                if (rol == null)
+                if (rol == null) {
                     return Results.BadRequest(); // 404 Bad Request: La solicitud no se pudo procesar, error de formato
+                }
 
                 var id = await rolServices.PostRol(rol);
                 // 201 Create : el recurso se creo con exito, se devuelve la ubicacion del recusrso creado
-                return Results.Created($"api/tareas/{id}", rol);
+                return Results.Created($"api/roles/{id}", rol);
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
                 Summary = "crear rol",

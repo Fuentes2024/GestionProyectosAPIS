@@ -4,8 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestionProyectosAPI.Models;
-
 public partial class Rols
 {
     [Key]
@@ -13,10 +11,10 @@ public partial class Rols
     public int RolId { get; set; }
 
     [Column("nombre")]
-    [StringLength(50)]
+    [StringLength(100)]
     [Unicode(false)]
     public string Nombre { get; set; } = null!;
 
     [InverseProperty("Rol")]
-    public virtual ICollection<Usuarios> Usuario { get; set; } = new List<Usuarios>();
+    public virtual ICollection<Usuarios> Usuarios { get; set; } = new List<Usuarios>();
 }
