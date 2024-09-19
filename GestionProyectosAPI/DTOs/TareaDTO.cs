@@ -4,6 +4,7 @@ namespace GestionProyectosAPI.DTOs
 {
     public class TareaResponse
     {
+        public int TareaId { get; set; }
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public string EstadoTarea { get; set; } = null!;
@@ -16,6 +17,7 @@ namespace GestionProyectosAPI.DTOs
 
     public class TareaRequest
     {
+        public int TareaId { get; set; }
         public string Nombre { get; set; } = null!;
         public string? Descripcion { get; set; }
         public string EstadoTarea { get; set; } = null!;

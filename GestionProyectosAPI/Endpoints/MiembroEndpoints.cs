@@ -20,7 +20,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener Miembro",
                 Description = "Muestra una lista de todos los miembros"
-            });
+            }).RequireAuthorization();
 
             group.MapGet("/{id}", async (int id, IMiembroServices miembroServices) =>
             {
@@ -34,7 +34,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener miembro",
                 Description = "Busca un miembro por un id"
-            });
+            }).RequireAuthorization();
 
             group.MapPost("/", async (MiembroEquipoRequest miembro, IMiembroServices miembroServices) =>
             {
@@ -48,7 +48,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "crear miembro",
                 Description = "Crear un nuevo miembro"
-            });
+            }).RequireAuthorization();
 
             group.MapPut("/{id}", async (int id, MiembroEquipoRequest miembro, IMiembroServices miembroServices) =>
             {
@@ -61,7 +61,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Modificar miembro",
                 Description = "Actualiza un miembro existente"
-            });
+            }).RequireAuthorization();
 
             group.MapDelete("/{id}", async (int id, IMiembroServices miembroServices) =>
             {
@@ -74,7 +74,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "ELiminar miembro",
                 Description = "ELiminar un miembro existente"
-            });
+            }).RequireAuthorization();
         }
     }
 }

@@ -20,7 +20,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener productos",
                 Description = "Muestra una lsita de toda las tareas"
-            });
+            }).RequireAuthorization();
 
             group.MapGet("/{id}", async (int id, ITareaServices tareaServices) =>
             {
@@ -34,7 +34,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener tarea",
                 Description = "BUsca un producto por un id"
-            });
+            }).RequireAuthorization();
 
             group.MapPost("/", async (TareaRequest tarea, ITareaServices tareaServices) =>
             {
@@ -48,7 +48,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "crear tarea",
                 Description = "Crear un nuevo tarea"
-            });
+            }).RequireAuthorization();
 
             group.MapPut("/{id}", async (int id ,TareaRequest tarea, ITareaServices tareaServices) =>
             {
@@ -61,7 +61,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Modificar tarea",
                 Description = "Actualiza una tarea existente"
-            });
+            }).RequireAuthorization();
 
             group.MapDelete("/{id}", async (int id,  ITareaServices tareaServices) =>
             {
@@ -74,7 +74,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "ELiminar tarea",
                 Description = "ELiminar una tarea existente"
-            });
+            }).RequireAuthorization();
         }
     }
 }

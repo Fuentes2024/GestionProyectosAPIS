@@ -18,7 +18,7 @@ namespace GestionProyectosAPI.Endpoints
             }).WithOpenApi(o=> new OpenApiOperation(o) {
                 Summary = "Obtener Informes",
                 Description = "Muestra una lista de todos los informes."
-            });
+            }).RequireAuthorization();
 
             group.MapGet("/{id}", async (int id, IInformeServices informeServices) =>
             {
@@ -31,7 +31,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener Informe",
                 Description = "Buscar un Informe por id."
-            });
+            }).RequireAuthorization();
 
             group.MapPost("/", async (InformeRequest informe, IInformeServices informeServices) =>
             {
@@ -45,7 +45,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Crear Informes",
                 Description = "Crear un nuevo  Informe."
-            });
+            }).RequireAuthorization();
 
             group.MapPut("/{id}", async (int id, InformeRequest informe, IInformeServices informeServices) =>
             {
@@ -59,7 +59,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Modificar Informes",
                 Description = "Actualizar un Informe exisitente."
-            });
+            }).RequireAuthorization();
 
 
             group.MapDelete("/{id}", async (int id, IInformeServices informeServices) =>
@@ -74,7 +74,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Eliminar Informes",
                 Description = "Eliminar un Informe exisitente."
-            });
+            }).RequireAuthorization();
         }
 
          

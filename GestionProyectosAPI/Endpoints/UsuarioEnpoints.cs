@@ -101,7 +101,6 @@ namespace GestionProyectosAPI.Endpoints
                         Subject = new ClaimsIdentity(new[]
                         {
                 new Claim(ClaimTypes.Name, usuario.Nombre),
-                new Claim(ClaimTypes.Role, usuario.RolId.ToString())
             }),
                         Expires = DateTime.UtcNow.AddHours(1),
                         Issuer = isusuario,
