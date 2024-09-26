@@ -68,14 +68,16 @@ namespace GestionProyectosAPI.Endpoints
             group.MapDelete("/{id}", async (int id, IRolServices rolServices) =>
             {
                 var result = await rolServices.DeleteRol(id);
+
                 if (result == -1)
-                    return Results.NotFound();// 404 not found: resurso solicitado no existe
+                    return Results.NotFound(); // 404 Not Found: El recurso solicitado no existe
                 else
-                    return Results.NoContent();// 204 NO Content: Recuros eliminado
+                    return Results.Ok(new { message = "El registro ha sido eliminado correctamente." }); // 200 OK con mensaje
+
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
-                Summary = "ELiminar rol",
-                Description = "ELiminar un rol existente"
+                Summary = "Eliminar rol",
+                Description = "Eliminar un rol existente"
             }).RequireAuthorization();
         }
     }

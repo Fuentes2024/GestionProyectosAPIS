@@ -47,7 +47,7 @@ namespace GestionProyectosAPI.Services.Usuario
         public async Task<UsuarioResponse> Login(UsuarioRequest usuario)
         {
             var usuarioEntity = await _db.Usuarios.FirstOrDefaultAsync(
-                            o => o.Nombre == usuario.Nombre
+                            o => o.Correo == usuario.Correo
                             && o.Clave == usuario.Clave
                 );
             var usuarioResponse = _mapper.Map<Usuarios, UsuarioResponse>(usuarioEntity);

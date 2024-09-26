@@ -45,9 +45,9 @@ namespace GestionProyectosAPI.Endpoints
                 if (usuario == null)
                     return Results.BadRequest(); // 404 Bad Request: La solicitud no se pudo procesar, error de formato
 
-              var id =  await usuarioServices.PostUsuario(usuario);
+                var id = await usuarioServices.PostUsuario(usuario);
                 // 201 Create : el recurso se creo con exito, se devuelve la ubicacion del recusrso creado
-                return Results.Created($"api/usuarios/{id}",usuario); 
+                return Results.Created($"api/usuarios/{id}", usuario);
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
                 Summary = "crear usuario",
@@ -73,7 +73,7 @@ namespace GestionProyectosAPI.Endpoints
                 if (result == -1)
                     return Results.NotFound();// 404 not found: resurso solicitado no existe
                 else
-                    return Results.NoContent();// 204 NO Content: Recuros eliminado
+                    return Results.Ok(new { message = "El registro ha sido eliminado correctamente." }); // 200 OK con mensaje
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
                 Summary = "ELiminar usuario",
@@ -82,48 +82,56 @@ namespace GestionProyectosAPI.Endpoints
 
             group.MapPost("/Login", async (UsuarioRequest usuario, IUsuarioServices usuarioServices, IConfiguration config) =>
             {
+                // Verifica las credenciales del usuario
                 var login = await usuarioServices.Login(usuario);
 
+                // Si el login es nulo, las credenciales son incorrectas
                 if (login is null)
-                    return Results.Unauthorized(); //Retorna el estado 401: Unauthorized
+                {
+                    return Results.Unauthorized(); // Retorna el estado 401: Unauthorized
+                }
                 else
                 {
+                    // Cargar configuraciones JWT desde appsettings
                     var jwtSetting = config.GetSection("JwtSetting");
                     var secretKey = jwtSetting.GetValue<string>("SecretKey");
-                    var isusuario = jwtSetting.GetValue<string>("Isusuario");
+                    var issuer = jwtSetting.GetValue<string>("Isusuario");
                     var audience = jwtSetting.GetValue<string>("Audience");
 
                     var tokenHandler = new JwtSecurityTokenHandler();
                     var key = Encoding.UTF8.GetBytes(secretKey);
 
+                    // Crear el descriptor del token
                     var tokenDescriptor = new SecurityTokenDescriptor
                     {
                         Subject = new ClaimsIdentity(new[]
                         {
-                new Claim(ClaimTypes.Name, usuario.Nombre),
+                new Claim(ClaimTypes.Email, login.Correo), 
+                new Claim(ClaimTypes.Name, login.Nombre)
+               
             }),
-                        Expires = DateTime.UtcNow.AddHours(1),
-                        Issuer = isusuario,
+                        Expires = DateTime.UtcNow.AddHours(1), // El token expira en 1 hora
+                        Issuer = issuer,
                         Audience = audience,
-                        SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key),
+                        SigningCredentials = new SigningCredentials(
+                            new SymmetricSecurityKey(key),
                             SecurityAlgorithms.HmacSha256Signature)
                     };
-                    // Crear token usando parámetros definidos
-                    var token = tokenHandler.CreateToken(tokenDescriptor);
-                    // Convertir token a una cadena
-                    var jwt = tokenHandler.WriteToken(token);
 
-                    // Retornar una respuesta con el token en formato JSON
+                    // Crear el token JWT
+                    var token = tokenHandler.CreateToken(tokenDescriptor);
+                    var jwt = tokenHandler.WriteToken(token); // Convertir el token a una cadena
+
+                    // Retornar el token en formato JSON
                     return Results.Ok(new { token = jwt });
                 }
-
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
                 Summary = "Login usuario",
                 Description = "Generar un token para inicio de sesión"
             });
 
-
         }
     }
 }
+
