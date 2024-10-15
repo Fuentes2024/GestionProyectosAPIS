@@ -23,10 +23,10 @@ public partial class Proyectos
     public string? Descripcion { get; set; }
 
     [Column("fechaInicio")]
-    public DateTime? FechaInicio { get; set; }
+    public DateOnly? FechaInicio { get; set; }
 
     [Column("fechaFin")]
-    public DateTime? FechaFin { get; set; }
+    public DateOnly? FechaFin { get; set; }
 
     [Column("presupuesto", TypeName = "decimal(18, 2)")]
     public decimal? Presupuesto { get; set; }

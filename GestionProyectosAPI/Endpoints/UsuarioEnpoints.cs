@@ -123,13 +123,13 @@ namespace GestionProyectosAPI.Endpoints
                     var jwt = tokenHandler.WriteToken(token); // Convertir el token a una cadena
 
                     // Retornar el token en formato JSON
-                    return Results.Ok(new { token = jwt });
+                    return Results.Ok(jwt);
                 }
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
                 Summary = "Login usuario",
                 Description = "Generar un token para inicio de sesión"
-            });
+            });         
 
         }
     }

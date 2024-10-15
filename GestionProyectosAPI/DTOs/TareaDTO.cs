@@ -15,6 +15,17 @@ namespace GestionProyectosAPI.DTOs
         public int ProyectoId { get; set; }
     }
 
+    public class PaginacionResponse<T>
+    {
+        public List<T> Items { get; set; }
+        public int PaginaActual { get; set; }
+        public int TotalPaginas { get; set; }
+        public int TotalElementos { get; set; }
+        public bool TienePaginaAnterior => PaginaActual > 1;
+        public bool TienePaginaSiguiente => PaginaActual < TotalPaginas;
+    }
+
+
     public class TareaRequest
     {
         public int TareaId { get; set; }
@@ -27,4 +38,11 @@ namespace GestionProyectosAPI.DTOs
         public int MiembroEquipoId { get; set; }
         public int ProyectoId { get; set; }
     }
+
+    public class PaginacionRequest
+    {
+        public int NumeroPagina { get; set; } = 1;
+    }
+
+
 }
