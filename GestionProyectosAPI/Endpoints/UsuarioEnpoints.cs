@@ -123,7 +123,7 @@ namespace GestionProyectosAPI.Endpoints
                     var jwt = tokenHandler.WriteToken(token); // Convertir el token a una cadena
 
                     // Retornar el token
-                    return Results.Content(jwt);
+                    return Results.Ok(jwt);
                 }
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
