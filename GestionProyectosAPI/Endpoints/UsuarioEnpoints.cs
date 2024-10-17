@@ -86,7 +86,7 @@ namespace GestionProyectosAPI.Endpoints
                 var login = await usuarioServices.Login(usuario);
 
                 // Si el login es nulo, las credenciales son incorrectas
-                if (login is null)
+                 if (login is null)
                 {
                     return Results.Unauthorized(); // Retorna el estado 401: Unauthorized
                 }
@@ -122,8 +122,8 @@ namespace GestionProyectosAPI.Endpoints
                     var token = tokenHandler.CreateToken(tokenDescriptor);
                     var jwt = tokenHandler.WriteToken(token); // Convertir el token a una cadena
 
-                    // Retornar el token en formato JSON
-                    return Results.Ok(new { token = jwt });
+                    // Retornar el token
+                    return Results.Content(jwt);
                 }
             }).WithOpenApi(o => new OpenApiOperation(o)
             {
