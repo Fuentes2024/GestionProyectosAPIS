@@ -129,7 +129,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Login usuario",
                 Description = "Generar un token para inicio de sesión"
-            });
+            });         
 
         }
     }

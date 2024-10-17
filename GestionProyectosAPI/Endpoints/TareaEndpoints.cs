@@ -1,5 +1,6 @@
 ﻿using GestionProyectosAPI.DTOs;
 using GestionProyectosAPI.Services.Tarea;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.OpenApi.Models;
 
 namespace GestionProyectosAPI.Endpoints
@@ -75,6 +76,24 @@ namespace GestionProyectosAPI.Endpoints
                 Summary = "ELiminar tarea",
                 Description = "ELiminar una tarea existente"
             }).RequireAuthorization();
+
+            // Nuevo endpoint para obtener tareas con paginación
+            group.MapGet("/paginacion", async (int numeroPagina, ITareaServices tareaServices) =>
+            {
+                var paginacionRequest = new PaginacionRequest
+                {
+                    NumeroPagina = numeroPagina
+                };
+
+                var tareasPaginadas = await tareaServices.ObtenerTareasPaginadas(paginacionRequest);
+                return Results.Ok(tareasPaginadas); // 200 OK con la lista paginada de tareas
+            })
+            .WithOpenApi(o => new OpenApiOperation(o)
+            {
+             Summary = "Obtener tareas paginadas",
+             Description = "Obtiene una lista paginada de tareas"
+            })
+            .RequireAuthorization();
         }
     }
 }

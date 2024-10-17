@@ -9,6 +9,7 @@ namespace GestionProyectosAPI.Services.Tarea
         Task<TareaResponse> GetTarea(int tareaId);
         Task<int> PutTarea(int tareaId, TareaRequest tarea);
         Task<int> DeleteTarea(int tareaId);
+        Task<PaginacionResponse<TareaResponse>> ObtenerTareasPaginadas(PaginacionRequest paginacionRequest);
 
     }
 }

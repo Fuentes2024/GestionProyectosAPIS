@@ -3,7 +3,7 @@ using GestionProyectosAPI.DTOs;
 using GestionProyectosAPI.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace GestionProyectosAPI.Services.Tarea 
+namespace GestionProyectosAPI.Services.Tarea
 {
     public class TareaServices : ITareaServices
     {
@@ -30,7 +30,7 @@ namespace GestionProyectosAPI.Services.Tarea
         public async Task<TareaResponse> GetTarea(int tareaId)
         {
             var tarea = await _db.Tareas.FindAsync(tareaId);
-            var tareaResponse = _mapper.Map<Tareas,TareaResponse>(tarea);
+            var tareaResponse = _mapper.Map<Tareas, TareaResponse>(tarea);
 
             return tareaResponse;
         }
@@ -44,6 +44,40 @@ namespace GestionProyectosAPI.Services.Tarea
 
         }
 
+        public async Task<PaginacionResponse<TareaResponse>> ObtenerTareasPaginadas(PaginacionRequest request)
+        {
+            int tamanoPagina = 5; // Limitar a 5 tareas por página
+            var totalElementos = await _db.Tareas.CountAsync();
+
+            var items = await _db.Tareas
+                .OrderBy(t => t.TareaId)
+                .Skip((request.NumeroPagina - 1) * tamanoPagina)
+                .Take(tamanoPagina)
+                .Select(t => new TareaResponse
+                {
+                    TareaId = t.TareaId,
+                    Nombre = t.Nombre,
+                    Descripcion = t.Descripcion,
+                    EstadoTarea = t.EstadoTarea,
+                    FechaInicio = t.FechaInicio,
+                    FechaFin = t.FechaFin,
+                    Prioridad = t.Prioridad,
+                    MiembroEquipoId = t.MiembroEquipoId,
+                    ProyectoId = t.ProyectoId
+                })
+                .ToListAsync();
+
+            var totalPaginas = (int)Math.Ceiling(totalElementos / (double)tamanoPagina);
+
+            return new PaginacionResponse<TareaResponse>
+            {
+                Items = items,
+                PaginaActual = request.NumeroPagina,
+                TotalPaginas = totalPaginas,
+                TotalElementos = totalElementos
+            };
+        }
+
         public async Task<int> PostTarea(TareaRequest tarea)
         {
             var tareaRequest = _mapper.Map<TareaRequest, Tareas>(tarea);
@@ -51,7 +85,7 @@ namespace GestionProyectosAPI.Services.Tarea
             await _db.SaveChangesAsync();
             return tareaRequest.TareaId;
 
-           
+
         }
 
         public async Task<int> PutTarea(int tareaId, TareaRequest tarea)
@@ -72,5 +106,6 @@ namespace GestionProyectosAPI.Services.Tarea
             _db.Tareas.Update(entity);
             return _db.SaveChanges();
         }
+         
     }
 }
