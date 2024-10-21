@@ -8,5 +8,6 @@ namespace GestionProyectosAPI.IntegrationTests.PRUEBAS
 {
     internal class Prueba
     {
+        //Ni hagan caso esta clase
     }
 }

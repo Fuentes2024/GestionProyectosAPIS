@@ -107,3 +107,6 @@ app.UseEndpoints();
 // Corregido aquí, usa app.MapEndpoints() en lugar de app.UseEndpoints()
 
 app.Run();
+
+//Avisar si sale este comentario
+public partial class Program { }
