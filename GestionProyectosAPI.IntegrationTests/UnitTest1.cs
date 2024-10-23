@@ -19,11 +19,11 @@ namespace GestionProyectosAPI.IntegrationTests
 
 
             var userSession = new UsuarioRequest { Correo = "chepe@gmail.com", Clave = "12345"};
-            var response = await _httpClient.PostAsJsonAsync("api/usuarios/Login", userSession);
-            if (response.IsSuccessStatusCode)
+            var Response = await _httpClient.PostAsJsonAsync("api/usuarios/Login", userSession);
+            if (Response.IsSuccessStatusCode)
             {
                 // Deserializar la respuesta JSON a un objeto LoginResponse
-                var result = await response.Content.ReadFromJsonAsync<string>(); 
+                var result = await Response.Content.ReadFromJsonAsync<string>(); 
             }
         }
     }
