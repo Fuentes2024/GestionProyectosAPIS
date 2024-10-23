@@ -12,10 +12,10 @@ namespace GestionProyectosAPI.IntegrationTests
         public async Task TestMethod1()
         {
             //Crear instancia en la aplicacion en memoria
-            using var aplication = new WebApplicationFactory<Program>();
+            using var application = new WebApplicationFactory<Program>();
 
             //Crear el cliente Http para enviar solicitudes
-            using var _httpClient = aplication.CreateClient();
+            using var _httpClient = application.CreateClient();
 
 
             var userSession = new UsuarioRequest { Correo = "chepe@gmail.com", Clave = "12345"};
