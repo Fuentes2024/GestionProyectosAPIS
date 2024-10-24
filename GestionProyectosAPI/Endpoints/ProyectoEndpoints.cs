@@ -21,7 +21,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener proyectos",
                 Description = "Muestra una lista de todos los proyectos"
-            });
+            }).RequireAuthorization();
 
             group.MapGet("/{id}", async (int id, IProyectoServices proyectoServices) =>
             {
@@ -35,7 +35,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "Obtener proyecto",
                 Description = "Busca un proyecto por un id"
-            });
+            }).RequireAuthorization();
 
             group.MapPost("/", async (ProyectoRequest proyecto, IProyectoServices proyectoServices) =>
             {
@@ -49,7 +49,7 @@ namespace GestionProyectosAPI.Endpoints
             {
                 Summary = "crear proyecto",
                 Description = "Crear un nuevo proyecto"
-            });
+            }).RequireAuthorization(); 
 
             group.MapPut("/{id}", async (int id, ProyectoRequest proyecto, IProyectoServices proyectoServices) =>
             {
